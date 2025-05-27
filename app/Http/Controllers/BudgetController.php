@@ -121,6 +121,7 @@ class BudgetController extends Controller
                 // Crear el presupuesto
                 $budget = Budget::create([
                     'customer_id' => $request->client_id,
+                    'user_id' => auth()->user()->id,
                     'currency_id' => $request->currency_id,
                     'total' => $total
                 ]);

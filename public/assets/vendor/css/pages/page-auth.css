@@ -18,7 +18,7 @@
 .authentication-wrapper .authentication-image {
   z-index: -1;
   inline-size: 100%;
-  inset-block-end: 7%;
+  inset-block-end: 0%;
   position: absolute;
   inset-inline-start: 0;
 }

@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ContractorController;
+use App\Http\Controllers\DollarRateController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -63,14 +65,40 @@ Route::middleware('auth')->group(function () {
     Route::put('/materiales/{id}/update', [MaterialController::class, 'update'])->name('material.update');
     Route::get('/materiales/{id}/destroy', [MaterialController::class, 'destroy'])->name('material.destroy');
 
+    Route::get('/tasa-dolar', [DollarRateController::class, 'index'])->name('dollar-rate.index');
+    Route::get('/tasa-dolar/create', [DollarRateController::class, 'create'])->name('dollar-rate.create');
+    Route::post('/tasa-dolar', [DollarRateController::class, 'store'])->name('dollar-rate.store');
+    Route::get('/tasa-dolar/{id}/show', [DollarRateController::class, 'show'])->name('dollar-rate.show');
+    Route::get('/tasa-dolar/{id}/edit', [DollarRateController::class, 'edit'])->name('dollar-rate.edit');
+    Route::put('/tasa-dolar/{id}/update', [DollarRateController::class, 'update'])->name('dollar-rate.update');
+    Route::get('/tasa-dolar/{id}/destroy', [DollarRateController::class, 'destroy'])->name('dollar-rate.destroy');
     
+    # Presupuestos  
     Route::get('/presupuestos', [BudgetController::class, 'index'])->name('budget.index');
     Route::get('/presupuestos/create', [BudgetController::class, 'create'])->name('budget.create');
     Route::post('/presupuestos', [BudgetController::class, 'store'])->name('budget.store');
     Route::get('/presupuestos/{id}/show', [BudgetController::class, 'show'])->name('budget.show');
+    Route::get('/presupuestos/{id}/getBudget', [BudgetController::class, 'getBudget'])->name('budget.getBudget');
     Route::get('/presupuestos/{id}/edit', [BudgetController::class, 'edit'])->name('budget.edit');
     Route::put('/presupuestos/{id}/update', [BudgetController::class, 'update'])->name('budget.update');
-    Route::get('/presupuestos/{id}/destroy', [BudgetController::class, 'destroy'])->name('budget.destroy');
+    Route::post('/presupuestos/{id}/destroy', [BudgetController::class, 'destroy'])->name('budget.destroy');
+    Route::get('/presupuestos/getClients', [BudgetController::class, 'getClients'])->name('budget.getClients');
+    Route::post('/presupuestos/storeClient', [BudgetController::class, 'storeClient'])->name('budget.storeClient');
+    Route::get('/presupuestos/getCurrencies', [BudgetController::class, 'getCurrencies'])->name('budget.getCurrencies');
+    Route::get('/presupuestos/{id}/updateStatus', [BudgetController::class, 'updateStatus'])->name('budget.updateStatus');
+    Route::post('/presupuestos/{id}/processPayment', [BudgetController::class, 'processPayment'])->name('budget.processPayment');
+    Route::get('/presupuestos/{id}/payments/{payment}/show', [BudgetController::class, 'showPayment'])->name('budget.showPayment');
+
+    # proyectos
+    Route::get('/proyectos', [ProjectController::class, 'index'])->name('project.index');
+    Route::get('/proyectos/create', [ProjectController::class, 'create'])->name('project.create');
+    Route::post('/proyectos', [ProjectController::class, 'store'])->name('project.store');
+    Route::get('/proyectos/{id}/show', [ProjectController::class, 'show'])->name('project.show');
+    Route::get('/proyectos/{id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+    Route::put('/proyectos/{id}/update', [ProjectController::class, 'update'])->name('project.update');
+    Route::get('/proyectos/{id}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::get('/proyectos/getClients', [ProjectController::class, 'getClients'])->name('project.getClients');
+    Route::get('/proyectos/{client_id}/getBudgets', [ProjectController::class, 'getBudgets'])->name('project.getBudgets');
     # Usuarios
     Route::get('/usuarios', [UsersController::class, 'index'])->name('user.index');
     Route::get('/usuarios/create', [UsersController::class, 'create'])->name('user.create');

@@ -13,9 +13,9 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Crear Ordenes de Compra de Materiales</h5>
+                    <h5 class="mb-0">Crear Presupuestos</h5>
                     <div>
-                        <a href="{{ route('melted.index') }}" class="btn btn-sm btn-secondary"><i
+                        <a href="{{ route('budget.index') }}" class="btn btn-sm btn-secondary"><i
                             class="ri-arrow-left-line me-1"></i> Regresar</a>
                     </div>
                     
@@ -23,12 +23,12 @@
 
 
                 <div class="card-body">
-                    <form id="formOrder" class="needs-validation" action="{{ route('melted.store') }}"
+                    <form id="formOrder" class="needs-validation" action="{{ route('budget.store') }}"
                         method="POST">
                         @csrf
                         
-                        <div class="row gy-5 mb-3">
                         <h6>1. Datos de Cliente</h6>
+                        <div class="row gy-1 mb-1">
                             <div class="col-4 mb-2">
                                 <div class="form-floating form-floating-outline">
                                     <select id="clients" name="client_id" style="padding: 0.1rem !important;"
@@ -37,9 +37,7 @@
                                         data-allow-clear="true" data-placeholder="Selecione Tipo de Cliente"
                                         style="width: 100%">
                                         <option value="">-- Seleccionar --</option>
-                                        @foreach($clients as $client)
-                                            <option value="{{ $client->id }}">{{ $client->cliente }}</option>
-                                        @endforeach
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -49,189 +47,58 @@
                                     <i class="ri-add-box-fill ri-20px "></i>
                                 </button>
                             </div>
-                        </div>
-                        <h6>2. Partidas</h6>
-                        <div class="row gy-5 mb-3">
-                            <div class=" col-lg-3 col-xl-3 col-md-3 col-sm-6 mb-0">
+                            <div class="col-4 mb-2">
                                 <div class="form-floating form-floating-outline">
-                                    <select id="melted" class="form-select">
+                                    <select id="currency_id" name="currency_id" style="padding: 0.1rem !important;"
+                                        class="form-select form-select-sm select2"
+                                        placeholder="Selecione Moneda"
+                                        data-allow-clear="true" data-placeholder="Selecione Moneda"
+                                        style="width: 100%">
                                         <option value="">-- Seleccionar --</option>
-                                        <option value="Si">Si</option>
-                                        <option value="No">No</option>
+                                        
                                     </select>
-                                    <label for="melted">¿Fundido?</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-3 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <select id="type_partida" class="form-select">
-                                        <option value="">-- Seleccionar --</option>
-                                        <option value="Gramos">Gramos</option>
-                                        <option value="Pieza">Pieza</option>
-                                    </select>
-                                    <label for="type_partida">Tipo de Partida</label>
                                 </div>
                             </div>
                         </div>
-                        <h6>2.1. Detalles de Partidas</h6>
+                        
+                        <h6>2. Detalles de Presupuestos</h6>
                         <div class="row gy-5 mb-3" id="partidaporfundir">
-                            <div class=" col-lg-4 col-xl-3 col-md-3 col-sm-6 mb-0">
+                            <div class=" col-lg-4 col-xl-4 col-md-4 col-sm-6 mb-0">
                                 <div class="form-floating form-floating-outline">
-                                    <select
-                                        class="material_id form-select select2"
-                                        placeholder="Selecione Material">
+                                    <select class="form-select select2" placeholder="Selecione tipo de presupuesto">
                                         <option value="">-- Seleccionar --</option>
-                                        @foreach($materials as $material)
-                                            <option value="{{ $material->name }}">{{ $material->name }}</option>
-                                        @endforeach
+                                        <option value="Presupuesto de Anteproyecto ">Presupuesto de Anteproyecto</option>
+                                        <option value="Presupuesto de Proyecto">Presupuesto de Proyecto</option>
+                                        <option value="Presupuesto de Administración">Presupuesto de Administración</option>
+                                        <option value="Presupuesto de Seguimiento de Obra">Presupuesto de Seguimiento de Obra</option>
+                                        <option value="Total Honorarios Profesionales">Total Honorarios Profesionales</option>
                                     </select>
-                                    <label for="material_id">Material</label>
+                                    <label for="">Tipos de Presupuestos</label>
                                 </div>
                             </div>
-                            <div class=" col-lg-4 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <select class="type_product_id form-select select2"
-                                        placeholder="Selecione tipo de producto">
-                                        <option value="">-- Seleccionar --</option>
-                                        @foreach($typeproducts as $type)
-                                            <option value="{{ $type->name }}">{{ $type->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label for="type_product_id">Tipo de Producto</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-4 col-xl-4 col-md-3 col-sm-6 mb-0">
+                           
+                            <div class=" col-lg-4 col-xl-4 col-md-4 col-sm-6 mb-0">
                                 <div class="form-floating form-floating-outline">
                                     <input type="text"
-                                        class="description form-control">
-                                    <label for="description">Descripción</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-2 col-xl-2 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="number"
-                                    class="net_weight form-control">
-                                    <label for="net_weight">Peso Neto (gr)</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-3 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="number"
-                                    class="agreed_weight form-control">
-                                    <label for="agreed_weight">Precio Pactado por Gr. ($)</label>
-                                </div>
-                            </div>
-
-
-                            <div class=" col-lg-3 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <button type="button" id=""
-                                class="btn btn-secondary mt-3 text-center add-item-porfundir">Agregar
-                                Partida</button>
-                            </div>
-                        </div>
-                        <div class="row gy-5 mb-3" id="partidasinfundir">
-                            <div class=" col-lg-4 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <select id="material_id"
-                                        class=" form-select select2"
-                                        placeholder="Selecione Material">
-                                        <option value="">-- Seleccionar --</option>
-                                        @foreach($materials as $material)
-                                            <option value="{{ $material->name }}">{{ $material->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label for="material_id">Material</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-4 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <select id="type_product_id" class=" form-select select2"
-                                        placeholder="Selecione tipo de producto">
-                                        <option value="">-- Seleccionar --</option>
-                                        @foreach($typeproducts as $type)
-                                            <option value="{{ $type->name }}">{{ $type->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label for="type_product_id">Tipo de Producto</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-4 col-xl-4 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input id="description" type="text"
-                                        class="description form-control">
-                                    <label for="description">Descripción</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-2 col-xl-2 col-md-2 col-sm-6 mb-0">
-                                <div  class="form-floating form-floating-outline">
-                                    <input type="number" id="cantidad"
-                                    class="form-control" value="1">
-                                    <label for="cantidad">Cantidad</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-3 col-xl-2 col-md-3 col-sm-6 mb-0">
-                                <div  class="form-floating form-floating-outline">
-                                    <input type="number" id="net_weight"
-                                    class="form-control">
-                                    <label for="net_weight">Peso Neto (gr)</label>
+                                        class="amount form-control">
+                                    <label for="amount">Costo</label>
                                 </div>
                             </div>
                             
-                            <div class=" col-lg-3 col-xl-2 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="text"
-                                    class="form-control legal_content"
-                                    value="">
-                                    <label for="legal_content">Contenido Ley</label>
-                                </div>
-                            </div>
                             <div class=" col-lg-3 col-xl-3 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="number" id="agreed_weight"
-                                    class="form-control">
-                                    <label for="agreed_weight">Precio Pactado por Gr. ($)</label>
-                                </div>
-                            </div>
-                            <div class=" col-lg-2 col-xl-2 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input  type="text" id="fine_gold_weight"
-                                    class="form-control" readonly>
-                                    <label for="fine_gold_weight">Peso de Oro Fino (Gr.)</label>
-                                </div>
-                            </div>
-
-                            <div class=" col-lg-3 col-xl-2 col-md-3 col-sm-6 mb-0">
-                                <div class="form-floating form-floating-outline">
-                                    <input type="text"
-                                    class="form-control total_amount"
-                                    value="" readonly>
-                                    <label for="total_amount">Total ($)</label>
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class=" col-lg-12 col-xl-12 col-md-12 col-sm-12 mb-0 d-flex justify-content-end">
-                                <button type="button"  class="btn btn-secondary text-center add-item-sinfundir">Agregar
-                                Partida</button>
+                                <button type="button" id="addBudget" class="btn btn-secondary mt-3 text-center ">Agregar</button>
                             </div>
                         </div>
+                        
                         <div class="row gy-5 mt-3">
                             <div class="col-md-12">
                                 <div class="table-responsive text-nowrap">
-                                    <table id="tablePartida" class="table table-bordered table-sm">
+                                    <table id="tablePresupuesto" class="table table-bordered table-sm">
                                         <thead>
                                             <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col">Material</th>
-                                                <th scope="col">Tipo de Producto</th>
-                                                <th scope="col">Tipo de Partida</th>
-                                                <th scope="col">Cantidad</th>
-                                                <th scope="col">Descripción</th>
-                                                <th scope="col">Peso Neto (gr)</th>
-                                                <th scope="col">Precio Pactado ($)</th>
-                                                <th scope="col">¿Fundido?</th>
-                                                <th scope="col">Contenido Ley</th>
-                                                <th scope="col">Contenido Fino</th>
-                                                <th scope="col">Total a Pagar($)</th>
+                                                <th scope="col">Tipo de Presupuesto</th>
+                                                <th scope="col">Costo</th>
+                                                <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -256,7 +123,7 @@
         </div>
     </div>
 </div>
-@include('melted.partials.modal-addclient')
+@include('budgets.partials.modal-create-customer') 
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
@@ -268,6 +135,6 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
 <!-- Page JS -->
 <script src="{{ asset('assets/js/forms-selects.js') }}"></script>
-<script src="{{ asset('pagesjs/orders.js') }}"></script>
+<script src="{{ asset('pagesjs/budgets/form-budgets.js') }}"></script>
 
 @endsection

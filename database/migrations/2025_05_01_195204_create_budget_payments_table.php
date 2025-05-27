@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('budget_id')->constrained('budgets')->onDelete('cascade');
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->foreignId('payment_method_id')->constrained('payment_methods')->onDelete('cascade');
+            $table->foreignId('dollar_rate_id')->constrained('dollar_rates')->onDelete('cascade');
+            $table->foreignId('currency_id')->constrained('currencies')->onDelete('cascade');
             $table->text('concept');
             $table->string('amount');
-            $table->string('payment_method');
+            $table->string('amount_pesos');
             $table->string('payment_date');
             $table->timestamps();
         });

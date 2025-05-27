@@ -1,26 +1,29 @@
-<a href="javascript:;" class="btn btn-sm btn-icon btn-text-secondary
-    rounded-pill"
-    data-bs-toggle="tooltip" title="Ver presupuesto"
-    onclick="viewRecord({{ $id }})">
-    <i class="ri-eye-fill ri-20px"></i>
-</a>
-
-<a href="{{ route('supplier.edit', $id) }}" class="btn btn-sm btn-icon btn-text-secondary
-    rounded-pill"
-    data-bs-toggle="tooltip" title="Editar presupuesto">
-    <i class="ri-edit-2-line ri-20px"></i>
-</a>
-
-<a href="javascript:;" class="btn btn-sm btn-icon btn-text-secondary
-    rounded-pill text-success"
-    data-bs-toggle="tooltip" title="Aprobar presupuesto"
-    onclick="">
-    <i class="ri-delete-bin-7-line ri-20px"></i>
-</a>
-
-<a href="javascript:;" class="btn btn-sm btn-icon btn-text-secondary
-    rounded-pill text-danger"
-    data-bs-toggle="tooltip" title="Rechazar presupuesto"
-    onclick="deleteRecord({{ $id }})">
-    <i class="ri-delete-bin-7-line ri-20px"></i>
-</a>
+<div class="d-flex gap-2">
+    <a href="javascript:void(0)" 
+       class="btn btn-icon btn-sm btn-view" 
+       data-id="{{ $budget->id }}"
+       title="Ver presupuesto">
+        <i class="ri-eye-line"></i>
+    </a>
+    @if($budget->status == 'Pendiente')
+    <a href="{{ route('budget.edit', $budget->id) }}" 
+       class="btn btn-icon btn-sm btn-edit"
+       title="Editar presupuesto">
+        <i class="ri-edit-line"></i>
+    </a>
+    <button type="button" 
+            class="btn btn-icon btn-sm btn-delete" 
+            data-id="{{ $budget->id }}"
+            title="Eliminar presupuesto">
+        <i class="ri-delete-bin-line"></i>
+    </button>
+    @endif
+    @if($budget->status == 'Aprobado')
+    <a href="javascript:void(0)" data-id="{{ $budget->id }}" data-amount="{{ $pendiente }}"
+        data-currency="{{ $moneda }}"
+       class="btn btn-icon btn-sm text-success payBudget"
+       title="Pagar presupuesto">
+        <i class="ri-money-dollar-circle-fill"></i>
+    </a>
+    @endif
+</div>

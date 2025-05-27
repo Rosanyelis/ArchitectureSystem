@@ -9,4 +9,19 @@ class Contractor extends Model
 {
     /** @use HasFactory<\Database\Factories\ContractorFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'telefono',
+        'correo',
+        'domicilio',
+        'localidad',
+        'provincia',
+    ];
+
+    public function getFullNameAttribute()
+    {
+        return $this->nombre . ' ' . $this->apellido;
+    }   
 }

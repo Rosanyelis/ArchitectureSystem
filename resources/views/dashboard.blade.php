@@ -18,10 +18,10 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end order-1 order-md-2">
                         <div class="card-body pb-0 px-0 pt-2">
-                        <img src="../../assets/img/illustrations/illustration-john-light.png"
+                        <img src="{{ asset('assets/img/illustrations/dash.png') }}"
                             height="186" class="scaleX-n1-rtl" alt="View Profile"
-                            data-app-light-img="illustrations/illustration-john-light.png"
-                            data-app-dark-img="illustrations/illustration-john-dark.png">
+                            data-app-light-img="{{ asset('assets/img/illustrations/dash.png') }}"
+                            data-app-dark-img="{{ asset('assets/img/illustrations/dash.png') }}">
                         </div>
                     </div>
                 </div>

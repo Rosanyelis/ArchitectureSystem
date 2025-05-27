@@ -14,13 +14,22 @@ class UnitSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['name' => 'm3', 'abbreviation' => 'm3'],
-            ['name' => 'kg', 'abbreviation' => 'kg'],
-            ['name' => 'toneladas', 'abbreviation' => 'ton'],
-            ['name' => 'unidades', 'abbreviation' => 'und'],
-            ['name' => 'metros', 'abbreviation' => 'm'],
-            ['name' => 'centímetros', 'abbreviation' => 'cm'],
-            ['name' => 'milímetros', 'abbreviation' => 'mm'],
+            ['name' => 'metro cúbico', 'abbreviation' => 'm3'],
+            ['name' => 'kilogramo', 'abbreviation' => 'kg'],
+            ['name' => 'tonelada', 'abbreviation' => 'ton'],
+            ['name' => 'unidad', 'abbreviation' => 'u'],
+            ['name' => 'metro', 'abbreviation' => 'm'],
+            ['name' => 'centímetro', 'abbreviation' => 'cm'],
+            ['name' => 'milímetro', 'abbreviation' => 'mm'],
+            ['name' => 'milímetro cuadrado', 'abbreviation' => 'mm2'],
+            ['name' => 'milímetro cúbico', 'abbreviation' => 'mm3'],
+            ['name' => 'mililitro', 'abbreviation' => 'ml'],
+            ['name' => 'litro', 'abbreviation' => 'lts'],
+            ['name' => 'galón', 'abbreviation' => 'gal'],
+            ['name' => 'pie', 'abbreviation' => 'pie'],
+            ['name' => 'pulgada', 'abbreviation' => 'pulg'],
+            ['name' => 'yarda', 'abbreviation' => 'yd'],
+            ['name' => 'libra', 'abbreviation' => 'lb'],
         ];
 
         foreach ($data as $unit) {

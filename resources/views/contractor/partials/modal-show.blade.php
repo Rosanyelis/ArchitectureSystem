@@ -2,11 +2,11 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalCenterTitle">Ver Cliente </h5>
+                    <h5 class="modal-title" id="modalCenterTitle">Ver Contratista </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h6>1. Datos de Cliente</h6>
+                    <h6>1. Datos de Contratista</h6>
                     <div class="row gy-5 mb-3">
                         
                         

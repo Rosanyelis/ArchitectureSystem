@@ -82,6 +82,14 @@
                                 <div data-i18n="Contratistas">Contratistas</div>
                             </a>
                         </li>
+                        <li class="menu-item
+                            @if (Route::currentRouteName() == 'dollar-rate.index' ||
+                                Route::currentRouteName() == 'dollar-rate.create' ||
+                                Route::currentRouteName() == 'dollar-rate.edit') active @endif">
+                            <a href="{{ route('dollar-rate.index') }}" class="menu-link">
+                                <div data-i18n="Tasa de dolar">Tasa de dolar</div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu-header mt-1">
@@ -90,8 +98,15 @@
                 <li class="menu-item
                     ">
                     <a href="{{ route('budget.index') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ri-test-tube-fill"></i>
+                        <i class="menu-icon tf-icons ri-file-list-3-line"></i>
                         <div data-i18n="Presupuestos">Presupuestos</div>
+                    </a>
+                </li>
+                <li class="menu-item
+                    ">
+                    <a href="{{ route('project.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ri-todo-fill"></i>
+                        <div data-i18n="Proyectos">Proyectos</div>
                     </a>
                 </li>
                 

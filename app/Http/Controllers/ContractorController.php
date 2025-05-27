@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contractor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Contractor\StoreContractorRequest;
 use App\Http\Requests\Contractor\UpdateContractorRequest;
@@ -48,9 +49,9 @@ class ContractorController extends Controller
     {
         try {
             Contractor::create($request->all());
-            return redirect()->route('client.index')->with('success', 'Comitente creado con exito');
+            return redirect()->route('contractor.index')->with('success', 'Contratista creado con exito');
         } catch (\Throwable $th) {
-            return redirect()->route('client.index')->with('error', 'Error al crear el Comitente: ' . $th->getMessage());
+            return redirect()->route('contractor.index')->with('error', 'Error al crear el Contratista: ' . $th->getMessage());
         }
        
     }
@@ -69,8 +70,8 @@ class ContractorController extends Controller
      */
     public function edit(string $id)
     {
-        $client = Contractor::find($id);
-        return view('contractor.edit', compact('client'));
+        $contractor = Contractor::find($id);
+        return view('contractor.edit', compact('contractor'));
     }
 
     /**
@@ -78,9 +79,9 @@ class ContractorController extends Controller
      */
     public function update(UpdateContractorRequest $request, string $id)
     {
-        $client = Contractor::find($id);
-        $client->update($request->all());
-        return redirect()->route('client.index')->with('success', 'Comitente actualizado con exito');
+        $contractor = Contractor::find($id);
+        $contractor->update($request->all());
+        return redirect()->route('contractor.index')->with('success', 'Contratista actualizado con exito');
     }
 
     /**
@@ -88,11 +89,8 @@ class ContractorController extends Controller
      */
     public function destroy(string $id)
     {
-        $client = Contractor::find($id);
-        if ($client->budgets()->exists() ) {
-            return redirect()->route('client.index')->with('error', 'No se puede eliminar el Comitente porque tiene registros relacionados.');
-        }
-        $client->delete();
-        return redirect()->route('client.index')->with('success', 'Comitente eliminado con exito');
+        $contractor = Contractor::find($id);
+        $contractor->delete();
+        return redirect()->route('contractor.index')->with('success', 'Contratista eliminado con exito');
     }
 }

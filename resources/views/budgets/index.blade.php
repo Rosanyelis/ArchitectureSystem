@@ -22,11 +22,16 @@
             </div>
         </div>
         <div class="card-datatable text-nowrap">
-            <table class="datatables table table-sm">
+            <table id="budgetsTable" class="datatables table table-sm">
                 <thead>
                     <tr>
+                        <th>N°</th>
                         <th>Comitente</th>
+                        <th>Fecha</th>
                         <th>Total</th>
+                        <th>Moneda</th>
+                        <th>Abonado</th>
+                        <th>Pendiente</th>
                         <th>Estatus</th>
                         <th style="width: 10px"></th>
                     </tr>
@@ -35,9 +40,11 @@
         </div>
     </div>
     <!--/ Ajax Sourced Server-side -->
-     <!-- Modal ver cotización-->
-    <!-- @include('budgets.partials.modal-show') -->
-    <!--/ Modal ver cotización-->
+    
+    <!-- Modal ver cotización-->
+    @include('budgets.partials.modal-show')
+    <!-- Modal de pago -->
+    @include('budgets.partials.modal-pay')
 </div>
 @endsection
 
@@ -48,5 +55,5 @@
     <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
     <!-- Page JS -->
-    <script src="{{ asset('pagesjs/budgets.js?v=2') }}"></script>
+    <script src="{{ asset('pagesjs/budgets/list-budgets.js') }}"></script>
 @endsection

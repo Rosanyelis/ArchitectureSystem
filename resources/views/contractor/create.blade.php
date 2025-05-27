@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Comitente - Crear')
+@section('title', 'Contratista - Crear')
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
@@ -13,15 +13,15 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Crear Comitente</h5>
+                        <h5 class="mb-0">Crear Contratista</h5>
 
-                        <a href="{{ route('client.index') }}" class="btn btn-sm btn-secondary"
+                        <a href="{{ route('contractor.index') }}" class="btn btn-sm btn-secondary"
                         ><i class="ri-arrow-left-line me-1"></i> Regresar</a>
                     </div>
 
 
                     <div class="card-body">
-                        <form id="formTask" class="needs-validation" action="{{ route('client.store') }}" method="POST">
+                        <form id="formTask" class="needs-validation" action="{{ route('contractor.store') }}" method="POST">
                             @csrf
                             <div class="row gy-5 mb-3">
                                 <div class="col-md-4" >
@@ -184,6 +184,5 @@
     <script src="{{ asset('assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
     <!-- Page JS -->
-    <script src="{{ asset('pagesjs/clients.js?v=2') }}"></script>
     <script src="{{ asset('assets/js/forms-selects.js') }}"></script>
 @endsection

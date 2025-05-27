@@ -60,10 +60,8 @@
                 <!-- /Login -->
                 <img
                     alt="mask"
-                    src="{{ asset('assets/img/illustrations/auth-basic-login-mask-light.png') }}"
-                    class="authentication-image d-none d-lg-block"
-                    data-app-light-img="illustrations/auth-basic-login-mask-light.png"
-                    data-app-dark-img="illustrations/auth-basic-login-mask-dark.png" />
+                    src="{{ asset('assets/img/illustrations/bg-login.png') }}"
+                    class="authentication-image d-none d-lg-block" />
             </div>
         </div>
     </div>

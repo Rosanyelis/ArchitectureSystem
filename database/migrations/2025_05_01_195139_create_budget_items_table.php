@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('budget_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('budget_id')->constrained('budgets')->onDelete('cascade');
-            $table->string('type_budget');
-            $table->string('description');
-            $table->string('price');
+            $table->string('type');
+            $table->string('amount');
             $table->timestamps();
         });
     }

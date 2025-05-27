@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('razon_social')->nullable();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('cuit_del_proveedor')->unique();
+            $table->string('cuit')->unique()->nullable();
             $table->string('telefono')->nullable();
-            $table->string('correo_electronico')->nullable();
+            $table->string('correo')->nullable();
             $table->string('domicilio');
             $table->string('localidad');
             $table->string('provincia')->nullable();

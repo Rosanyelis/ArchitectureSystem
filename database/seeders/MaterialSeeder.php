@@ -13,17 +13,59 @@ class MaterialSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
-            ['name' => 'Cemento'],
-            ['name' => 'Arena'],
-            ['name' => 'Piedra 1/3'],
-            ['name' => 'Hierro 10/12'],
-            ['name' => 'Hierro 6'],
-            ['name' => 'Alambre atar'],
+        $materials = [
+            'Cemento',
+            'Arena',
+            'Piedra 1/3',
+            'Piedra',
+            'Hierro 10/12',
+            'Hierro 6',
+            'Hierro 6/8',
+            'Alambre atar',
+            'Cal',
+            'Cascote',
+            'Hierro 8',
+            'Hierro 8/10',
+            'Hierro 4,2',
+            'Hierro 10',
+            'Cemento Alb.',
+            'Ladrillo común',
+            'Ladrillo hueco 8x18x33',
+            'Ladrillo Hueco 12x18x33',
+            'Ladrillo hueco 12x19x33',
+            'Ladrillo H° 9x19x39',
+            'Ladrillo H° 12x19x39',
+            'Ladrillo H° 15x19x39',
+            'Ladrillo H° 19x19x39',
+            'Hidrófugo',
+            'Pintura asf.',
+            'Poliestireno exp. mol.',
+            'Tejuela ladrillo comun',
+            'Pegamento impermeable',
+            'Laca al agua',
+            'Latex interior',
+            'Latex exterior',
+            'Microcemento',
+            'Pintura',
+            'Fijador',
+            'Fijador al agua',
+            'Latex',
+            'Membrana',
+            'Cartucho 300ml',
+            'Longitud estribos',
+            'Cantidad de estribos',
+            'Hierro estribos 4,2mm',
+            'Hierro arm. Ppal 6mm',
+            'Hierro arm. Ppal 8mm',
+            'Hierro arm. Ppal 10mm',
+            'Hierro arm. Ppal 12mm',
+            'Hierro arm. Ppal 16mm',
         ];
 
-        foreach ($data as $material) {
-            Material::create($material);
+        foreach ($materials as $material) {
+            Material::create([
+                'name' => $material,
+            ]);
         }
     }
 }

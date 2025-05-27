@@ -20,7 +20,7 @@ class ContractorFactory extends Factory
             'nombre' => $this->faker->firstName(),
             'apellido' => $this->faker->lastName(),
             'telefono' => $this->faker->phoneNumber(),
-            'correo_electronico' => $this->faker->email(),
+            'correo' => $this->faker->email(),
             'domicilio' => $this->faker->address(),
             'localidad' => $this->faker->city(),
             'provincia' => $this->faker->state(),

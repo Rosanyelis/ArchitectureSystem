@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono')->nullable();
-            $table->string('correo_electronico')->nullable();
+            $table->string('correo')->nullable();
             $table->string('domicilio')->nullable();
             $table->string('localidad')->nullable();
             $table->string('provincia')->nullable();

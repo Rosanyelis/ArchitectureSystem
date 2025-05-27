@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
-            $table->string('total_budget');
+            $table->foreignId('currency_id')->constrained('currencies')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('total');
             $table->enum('status', ['Pendiente', 'Aprobado', 'Rechazado'])->default('Pendiente');
+            $table->enum('status_payment', ['Pendiente', 'Pagado', 'Cancelado'])->default('Pendiente');
             $table->timestamps();
         });
     }

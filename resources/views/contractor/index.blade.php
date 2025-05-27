@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Comitentes')
+@section('title', 'Contratistas')
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
@@ -14,11 +14,11 @@
     <!-- Ajax Sourced Server-side -->
     <div class="card">
         <div class="card-header header-elements border-bottom">
-            <h5 class="mb-0 me-2">Comitentes</h5>
+            <h5 class="mb-0 me-2">Contratistas</h5>
 
             <div class="card-header-elements ms-auto">
-                <a href="{{ route('client.create') }}" class="btn btn-sm btn-primary"
-                >Crear Comitente</a>
+                <a href="{{ route('contractor.create') }}" class="btn btn-sm btn-primary"
+                >Crear Contratista</a>
             </div>
         </div>
         <div class="card-datatable text-nowrap">
@@ -37,7 +37,7 @@
     </div>
     <!--/ Ajax Sourced Server-side -->
      <!-- Modal ver cotización-->
-    @include('clients.partials.modal-show')
+    @include('contractor.partials.modal-show')
     <!--/ Modal ver cotización-->
 </div>
 @endsection
@@ -49,5 +49,5 @@
     <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
     <!-- Page JS -->
-    <script src="{{ asset('pagesjs/clients.js?v=2') }}"></script>
+    <script src="{{ asset('pagesjs/contractor/list-contractor.js') }}"></script>
 @endsection

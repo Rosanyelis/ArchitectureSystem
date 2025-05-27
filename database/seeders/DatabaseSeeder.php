@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TypeTaskSeeder::class,
             TypeTaskMaterialSeeder::class,
             CurrencySeeder::class,
+            DollarRateSeeder::class,
             PaymentMethodSeeder::class,
             CustomerSeeder::class,
             SupplierSeeder::class,

@@ -10,7 +10,8 @@ class Budget extends Model
         'customer_id',
         'currency_id',
         'total',
-        'status'
+        'status',
+        'user_id'
     ];
 
     public function customer()

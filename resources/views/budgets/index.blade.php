@@ -11,6 +11,64 @@
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row g-6 mb-6">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="me-1">
+                            <p class="text-heading mb-1">Presupuestos</p>
+                            <div class="d-flex align-items-center">
+                                <h4 class="mb-1 me-2" id="totalProyectos">0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="me-1">
+                            <p class="text-heading mb-1">Aprobados</p>
+                            <div class="d-flex align-items-center">
+                                <h4 class="mb-1 me-2" id="totalAprobados">0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="me-1">
+                            <p class="text-heading mb-1">Total Pendiente</p>
+                            <div class="d-flex align-items-center">
+                                <h4 class="mb-1 me-2" id="totalPendiente">0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="me-1">
+                            <p class="text-heading mb-1">Total de Pagados</p>
+                            <div class="d-flex align-items-center">
+                                <h4 class="mb-1 me-2" id="totalPagados">0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Ajax Sourced Server-side -->
     <div class="card">
         <div class="card-header header-elements border-bottom">

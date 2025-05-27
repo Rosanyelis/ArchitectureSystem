@@ -67,6 +67,31 @@ const BudgetListModule = {
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
                  "<'row'<'col-sm-12'tr>>" +
                  "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            drawCallback: function(settings) {
+                // Actualizar el total de pendiente
+                // total de proyectos
+                const totalProyectos = this.api().ajax.json().data.length;
+                $('#totalProyectos').text(totalProyectos);
+                // total de presupuestos aprobados
+                const totalAprobados = this.api().ajax.json().data.filter(budget => budget.status === 'Aprobado').length;
+                $('#totalAprobados').text(totalAprobados);
+                // total de pendiente
+                let totalPendiente = 0;
+                this.api().ajax.json().data.forEach(budget => {
+                    // formatear el total de pendiente para eliminar el simbolo $
+                    let totalPendienteFormateado = budget.pendiente.replace('$', '').replace('.', '');                    
+                    totalPendiente += parseInt(totalPendienteFormateado);
+                });
+                $('#totalPendiente').text(numberFormat.format(totalPendiente)); 
+                
+                // total de pagados
+                let totalPagados = 0;
+                this.api().ajax.json().data.forEach(budget => {
+                    let totalPagadoFormateado = budget.abonado.replace('$', '').replace('.', '');
+                    totalPagados += parseInt(totalPagadoFormateado);
+                });
+                $('#totalPagados').text(numberFormat.format(totalPagados));
+            }
         });
     },
 

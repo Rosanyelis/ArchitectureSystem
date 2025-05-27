@@ -27,7 +27,7 @@ class ProjectController extends Controller
                     return $row->customer ? $row->customer->nombre . ' ' . $row->customer->apellido : 'N/A';
                 })
                 ->addColumn('total_presupuestado', function ($row) {
-                    return $row->budget ?  $row->budget->total . ' ' . $row->budget->currency->abbreviation : 0;
+                    return $row->budget ?  number_format($row->budget->total, 0, '.', ',') . ' ' . $row->budget->currency->abbreviation : 0;
                 })
                 ->addColumn('usuario', function ($row) {
                     return $row->user ? $row->user->name : 'N/A';

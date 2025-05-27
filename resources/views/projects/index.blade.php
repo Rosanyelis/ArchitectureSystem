@@ -26,15 +26,15 @@
                 <thead>
                     <tr>
                         <th>N°</th>
-                        <th>Imagen</th>
                         <th>Proyecto</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Fin</th>
                         <th>Comitente</th>
-                        <th>Total Presupuestado</th>
-                        <th>Estatus de Permisos</th>
-                        <th>Estatus de Proyecto</th>
-                        <th>Estatus de Pagos</th>
+                        <th>Total Pres.</th>
+                        <th>Permisos</th>
+                        <th>Estado <br> Pagos</th>
+                        <th>Estado</th>
+                        <th>Usuario</th>
                         <th style="width: 10px"></th>
                     </tr>
                 </thead>

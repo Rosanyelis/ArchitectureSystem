@@ -28,18 +28,48 @@ const BudgetListModule = {
             type: 'POST',
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'url_image', name: 'url_image' },
+                { data: 'name', name: 'name' },
+                { data: 'start_date', name: 'start_date' },
+                { data: 'end_date', name: 'end_date' },
                 { data: 'cliente', name: 'cliente' },
                 { data: 'total_presupuestado', name: 'total_presupuestado' },
-                { data: 'usuario', name: 'usuario' },
-                { data: 'fecha', name: 'fecha' },
                 { data: 'status_permission', name: 'status_permission' },
                 { data: 'status_payment', name: 'status_payment' },
                 { data: 'status', name: 'status' },
+                { data: 'usuario', name: 'usuario' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ],
             columnDefs: [
-                
+                {
+                    targets: 1,
+                    render: function(data, type, row) {
+                        return `<div class="d-flex justify-content-start align-items-center user-name">
+                        <div class="avatar-wrapper">
+                            <div class="avatar avatar-sm me-4">
+                                <img src="${row.url_image}" alt="${row.name}" class="rounded-circle">
+                            </div>
+                        </div>  
+                        <div class="d-flex flex-column">
+                            <a href="app-user-view-account.html" class="text-heading text-truncate">
+                                <span class="fw-medium">${row.name}</span>
+                            </a>
+                        </div>
+                    </div>`;
+                    }
+                },
+                {
+                    targets: 2,
+                    render: function(data, type, row) {
+                        return moment(data).format('DD/MM/YYYY');
+                    }
+                },
+                {
+                    targets: 3,
+                    render: function(data, type, row) {
+                        return moment(data).format('DD/MM/YYYY');
+                    }
+                },
+
             ],
             order: [[2, 'desc']], // Ordenar por fecha descendente por defecto
             language: {
